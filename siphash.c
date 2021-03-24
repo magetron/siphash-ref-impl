@@ -71,6 +71,7 @@
         printf("(%3zu) v1 %016" PRIx64 "\n", inlen, v1);                       \
         printf("(%3zu) v2 %016" PRIx64 "\n", inlen, v2);                       \
         printf("(%3zu) v3 %016" PRIx64 "\n", inlen, v3);                       \
+        printf("\n");                                                          \
     } while (0)
 #else
 #define TRACE
@@ -94,10 +95,17 @@ int siphash(const void *in, const size_t inlen, const void *k, uint8_t *out,
     const unsigned char *end = ni + inlen - (inlen % sizeof(uint64_t));
     const int left = inlen & 7;
     uint64_t b = ((uint64_t)inlen) << 56;
+
+    TRACE;
+    printf("k0 = %016" PRIx64 "\n", k0);
+    printf("k1 = %016" PRIx64 "\n", k1);
+
     v3 ^= k1;
     v2 ^= k0;
     v1 ^= k1;
     v0 ^= k0;
+
+    TRACE;
 
     if (outlen == 16)
         v1 ^= 0xee;
