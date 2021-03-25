@@ -52,9 +52,9 @@ security for any function with the same key and output size.
 
 The standard PRF security goal allow the attacker access to the output of SipHash on messages chosen adaptively by the attacker.
 
-Security is limited by the key size (128 bits). 
+Security is limited by the key size (128 bits).
 Attackers searching 2<sup>*s*</sup> keys have chance 2<sup>*s*−128</sup> of finding
-the SipHash key. 
+the SipHash key.
 Security is also limited by the output size. In particular, when
 SipHash is used as a MAC, an attacker who blindly tries 2<sup>*s*</sup> tags will
 succeed with probability 2<sup>*s*-*t*</sup>, if *t* is that tag's bit size.
@@ -75,7 +75,7 @@ Running
   make
 ```
 
-will build tests for 
+will build tests for
 
 * SipHash-2-4-64
 * SipHash-2-4-128
@@ -108,7 +108,7 @@ The `makefile` also takes *c* and *d* rounds values as parameters.
 
 ```sh
 make cROUNDS=2 dROUNDS=4
-``` 
+```
 
 Obviously, if the number of rounds is modified then the test vectors
 won't verify.
